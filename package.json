@@ -1,0 +1,39 @@
+{
+  "name": "reflux",
+  "version": "1.0.0",
+  "description": "Describe reflux here",
+  "private": true,
+  "scripts": {
+    "build": "nwb build-react-app",
+    "clean": "nwb clean-app",
+    "start": "nwb serve-react-app",
+    "test": "nwb test",
+    "test:coverage": "nwb test --coverage",
+    "test:watch": "nwb test --server"
+  },
+  "dependencies": {
+    "bottlejs": "1.4.0",
+    "bundle-loader": "0.5.4",
+    "localforage": "1.4.3",
+    "lodash": "4.16.1",
+    "nwb": "^0.12.2",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "2.8.1",
+    "recompose": "0.20.2",
+    "superagent": "2.3.0",
+    "superagent-use": "0.1.0",
+    "underscore": "1.8.3",
+    "xtpoint": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "6.1.2",
+    "eslint": "3.6.0",
+    "eslint-loader": "1.5.0",
+    "eslint-plugin-react": "6.3.0",
+    "nwb": "0.12.x"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": ""
+}
