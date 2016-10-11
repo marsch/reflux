@@ -41,7 +41,7 @@ class AuthService {
     return (nextState, replace, callback) => {
       this.isLoggedIn()
         .then(() => {
-          // redirect if logged in
+          // redirect if logged
           replace({
             pathname: fallbackRoute,
             state: { nextPathname: nextState.location.pathname }
@@ -51,6 +51,14 @@ class AuthService {
         .catch(() => {
           callback()
         })
+    }
+  }
+
+  logout(newRoute = '/') {
+    return (nextState, replace, callback) => {
+      //do logout stuff
+      replace(newRoute)
+      callback()
     }
   }
 }

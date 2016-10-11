@@ -2,9 +2,9 @@
 export const bootstrap = (ext, di) => {
   ext.point('app.routes').extend({
     id: 'poopRoute',
-    config: () => {
+    config: function(routes=[]) {
       const auth = di.container.app.auth
-      return {
+      routes.push({
         path: '/poop',
         onEnter: auth.userRequired(),
         getComponents(nextState, cb) {
@@ -12,7 +12,9 @@ export const bootstrap = (ext, di) => {
             cb(null, require('./components/poop'))
           })
         }
-      }
+      })
+      debugger;
+      return routes
     }
   })
 }

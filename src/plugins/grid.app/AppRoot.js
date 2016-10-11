@@ -46,8 +46,8 @@ class AppRoot extends React.Component {
     //inject acl templates here:
     //
     // like onEnter: requiredAcl([AccessLevel.UNAUTHORIZED, AccessLevel.Visitor, AccessLevel.FacebookUser])
-    const childRoutes = extensions.point('app.routes').invoke('config', this).value()
-
+    const childRoutes = extensions.point('app.routes').exec('config', this)
+    debugger;
     // route views definition
     //const routeViews = extensions.point('app.route.views').invoke('config', this).value()
 
