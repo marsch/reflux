@@ -57,6 +57,7 @@
     "semi-spacing": 2,
     "quotes": [1, "single", {"allowTemplateLiterals": true}],
     "key-spacing": [2],
+    "indent": ["error", 2],
 
     "react/jsx-no-undef": 2,
     "react/jsx-uses-react": 1,

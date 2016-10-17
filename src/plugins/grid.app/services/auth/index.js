@@ -1,28 +1,28 @@
 class AuthService {
-  constructor(api, storage) {
+  constructor(api, sessionStorage) {
     this.api = api
-
-    // just for:
-    // - last check timestamp
-    // - token
-    // - refresh token?
-    this.storage = storage
+    this.sessionStorage = sessionStorage
   }
 
   isLoggedIn() {
+    console.log('isLoggedIn is executed')
     return new Promise((resolve, reject) => {
-      this.storage.getItem('grid-session')
+      debugger
+      this.sessionStorage.getItem('grid-session')
       .then((sessionData) => {
         if(sessionData === null) {
           // no session data
           reject()
         }
+        resolve()
       })
     })
   }
 
   userRequired(fallbackRoute = '/login') {
+    console.log('define userRequired')
     return (nextState, replace, callback) => {
+      console.log('executing userRequired')
       this.isLoggedIn()
         .then(() => {
           callback()
@@ -56,7 +56,7 @@ class AuthService {
 
   logout(newRoute = '/') {
     return (nextState, replace, callback) => {
-      //do logout stuff
+      this.storage.removeItem('grid-session')
       replace(newRoute)
       callback()
     }
@@ -66,8 +66,8 @@ class AuthService {
 function AuthServiceFactory() {
   this.$get = function(container) {
     const api = container.api
-    const storage = container.storage
-    return new AuthService(api, storage)
+    const sessionStorage = container.sessionStorage
+    return new AuthService(api, sessionStorage)
   }
 }
 

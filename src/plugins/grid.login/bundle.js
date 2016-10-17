@@ -2,8 +2,7 @@
 export const bootstrap = (ext, di) => {
   ext.point('app.routes').extend({
     id: 'login',
-    config: function(routes) {
-      debugger
+    config: function(routes = []) {
       const auth = di.container.app.auth
       routes.push({
         path: '/login',
@@ -14,8 +13,18 @@ export const bootstrap = (ext, di) => {
           })
         }
       },{
-        path: 'logout',
+        path: '/logout',
         onEnter: auth.logout(),
+      }, {
+        path: '/emailLogin',
+        onEnter: function() {
+          console.error('here we are', arguments)
+        },
+        getComponents(nextState, cb) {
+          require.ensure([], (require) => {
+            cb(null, require('./components/login'))
+          })
+        }
       })
       return routes
     }

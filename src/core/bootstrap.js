@@ -13,8 +13,10 @@ modulesContext.keys().forEach((file) => {
 
 export default function () {
   // help all plugins to configure themselves
-  ext.point('core.bootstrap').invoke('exec', null, di)
-
-  // actually execute the typical calls to attach the application to the dom (aka. initial render call)
-  ext.point('core.attach').invoke('exec')
+  // NOTE: async startup
+  const bundles = ext.point('core.bootstrap').invoke('exec', null, di)
+  Promise.all(bundles.value()).then(() => {
+    // actually execute the typical calls to attach the application to the dom (aka. initial render call)
+    ext.point('core.attach').invoke('exec')
+  })
 }

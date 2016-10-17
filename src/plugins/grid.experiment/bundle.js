@@ -8,12 +8,12 @@ export const bootstrap = (ext, di) => {
         path: '/poop',
         onEnter: auth.userRequired(),
         getComponents(nextState, cb) {
+          console.log('getcomponents')
           require.ensure([], (require) => {
             cb(null, require('./components/poop'))
           })
         }
       })
-      debugger;
       return routes
     }
   })

@@ -1,0 +1,8 @@
+{
+    "Array iteration: native forEach": {
+        "log": [],
+        "time": 0.00012741571553360903,
+        "status": "PASSED",
+        "noExpectationsWarning": false
+    }
+}
